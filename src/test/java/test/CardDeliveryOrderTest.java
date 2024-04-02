@@ -1,9 +1,9 @@
 package test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import data.DataGenerator;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 
 
@@ -64,6 +64,16 @@ public class CardDeliveryOrderTest {
         $(notificationContentSelector).shouldHave(visible, Duration.ofSeconds(15)).shouldHave(text(notificationContentText + date));
     }
 
+    @BeforeAll
+    static void setUppAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
     @BeforeEach
     void beforeTests() {
         open("http://localhost:9999");
@@ -72,6 +82,7 @@ public class CardDeliveryOrderTest {
 
     @Test
     @DisplayName("Should successful plan and replan meeting")
+    //@Step("Registration for {user.name}/{user.city}/{user.phone}")
     void shouldSuccessfulPlanAndRePlanMeeting() {
         var validUser = DataGenerator.Registration.generateUser("ru");
         var daysToAddForFirstMeeting = 4;
