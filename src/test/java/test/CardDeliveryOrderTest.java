@@ -2,6 +2,7 @@ package test;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import data.DataGenerator;
+import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
@@ -42,6 +43,7 @@ public class CardDeliveryOrderTest {
         $(selector).sendKeys(Keys.DELETE);
     }
 
+    @Step("Order card for {city}/{date}/{name}/{phone}")
     public void fillingOutCardOrderForm(String city, String date, String name, String phone) {
         $(validCitySelector).setValue(city);
         $(validDateSelector).setValue(date);
@@ -82,7 +84,6 @@ public class CardDeliveryOrderTest {
 
     @Test
     @DisplayName("Should successful plan and replan meeting")
-    //@Step("Registration for {user.name}/{user.city}/{user.phone}")
     void shouldSuccessfulPlanAndRePlanMeeting() {
         var validUser = DataGenerator.Registration.generateUser("ru");
         var daysToAddForFirstMeeting = 4;
