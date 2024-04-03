@@ -11,6 +11,13 @@ sourceCompatibility = 11
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
+allure {
+    version = '2.20.1'
+    useJUnit5 {
+        version = '2.20.1'
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -19,21 +26,17 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'com.codeborne:selenide:6.19.1'
+
     testImplementation 'com.github.javafaker:javafaker:1.0.2' exclude module: 'snakeyaml'
     testImplementation 'org.yaml:snakeyaml:2.0'
-
-    testImplementation 'io.qameta.allure:allure-junit5:2.22.0'
-    testImplementation 'io.qameta.allure:allure-commandline:2.22.0'
-    testImplementation 'io.qameta.allure:allure-assertj:2.22.0'
-    testImplementation 'io.qameta.allure:allure-java-commons:2.22.0'
-    testImplementation 'io.qameta.allure:allure-selenide:2.22.0'
-    testImplementation 'org.aspectj:aspectjweaver:1.9.19'
 
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.30'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testImplementation 'io.qameta.allure:allure-selenide:2.20.1'
 }
 
 test {
