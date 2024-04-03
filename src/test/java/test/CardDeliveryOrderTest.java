@@ -43,7 +43,7 @@ public class CardDeliveryOrderTest {
         $(selector).sendKeys(Keys.DELETE);
     }
 
-    @Step("Order card for {city}/{date}/{name}/{phone}")
+    @Step("Заказ карты для: имя: {name} /телефон: {phone} /дата: {date} /город {city}")
     public void fillingOutCardOrderForm(String city, String date, String name, String phone) {
         $(validCitySelector).setValue(city);
         $(validDateSelector).setValue(date);
